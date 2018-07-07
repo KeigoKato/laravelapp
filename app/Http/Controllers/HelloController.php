@@ -7,10 +7,12 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-  public function index($id="zero") {
+  // クエリ文字列を受け取る場合はアクションメソッドの引数にRequestクラスのrequestインスタンスを渡す。
+  public function index(Request $request) {
     $data = [
+      // "キー名"クエリの中身はrequestメソッドの"キー名"プロパティに入っている
       "msg" => "これはコントローラから渡されたメッセージです。",
-      "id" => $id,
+      "id" => $request->id,
     ];
     return view("hello.index", $data);
   }
