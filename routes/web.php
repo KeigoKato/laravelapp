@@ -27,4 +27,4 @@ Route::get('/', function () {
 // Route::get("hello/{id?}/{pass?}", "HelloController@index");
 
 // シングルアクションコントローラにはアクション名は必要ない
-Route::get("hello", "HelloController");
+Route::get("hello", "HelloController@index");

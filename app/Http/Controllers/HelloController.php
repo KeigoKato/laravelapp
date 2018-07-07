@@ -3,35 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-  // シングルアクションコントローラのメソッド名は__invokeとするのが決まり
-  public function __invoke() {
-    return <<<EOF
+  // RequestクラスのrequestインスタンスとResponseクラスのresponseインスタンスを引数に置くことでフォームのパラメータを受け取る
+  public function index(Request $request, Response $response) {
+    $html = <<<EOF
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Hello</title>
+    <title>Hello/Index</title>
     <style>
       body {
         font-size: 16pt;
         color: #999;
       }
       h1 {
-        font-size: 30pt;
+        font-size: 120pt;
         text-align: right;
-        color: #eee;
-        margin: -15px 0 0 0;
+        color: #fafafa;
+        margin: -50px 0 -120px 0;
       }
     </style>
   </head>
   <body>
-    <h1>Single Action</h1>
-    <p>これはシングルアクションコントローラです。</p>
+    <h1>Hello</h1>
+    <h3>Request</h3>
+    <pre>{$request}</pre>
+    <h3>Response</h3>
+    <pre>{$response}</pre>
   </body>
 </html>
 EOF;
+    $response->setContent($html);
+    return $response;
   }
 }
