@@ -19,10 +19,12 @@
   </head>
   <body>
     <h1>Blade/Index</h1>
-    <!-- <p><?php echo $msg; ?></p> と書いてもBladeで書いても同じこと-->
-    <p>{{$msg}}</p>
+    @if ($msg != "")
+      <p>こんにちは、{{$msg}}さん。</p>
+    @else
+      <p>なにか書いてください</p>
+    @endif
     <form class="" action="/hello" method="post">
-      <!-- フォームタグの下には必ずcsrf対策用のヘルパーメソッドを指定する -->
       {{csrf_field()}}
       <input type="text" name="msg">
       <input type="submit">
