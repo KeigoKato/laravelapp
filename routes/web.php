@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 // getリクエスト先のアドレスに入力したmsgの値がヒアドキュメント内の$msgに反映される
-Route::get("hello/{msg}", function($msg){
+Route::get("hello/{msg?}", function($msg="no message"){
   $html = <<<EOF
 <!DOCTYPE html>
 <html lang="ja">
