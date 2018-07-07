@@ -26,5 +26,7 @@ Route::get('/', function () {
 // /hello/123/456とアドレスを指定すれば123と456が変数に入る
 // Route::get("hello/{id?}/{pass?}", "HelloController@index");
 
-// シングルアクションコントローラにはアクション名は必要ない
-Route::get("hello", "HelloController@index");
+// viewメソッドによってビューファイルをレンダリングする
+Route::get("hello", function() {
+  return view("hello.index");
+});
