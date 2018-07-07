@@ -8,7 +8,8 @@ use Illuminate\Http\Response;
 class HelloController extends Controller
 {
   public function index() {
-    return view("hello.index", $data);
+    // テンプレートに値を渡していないからてプレートの@isset($msg)はfalseになる
+    return view("hello.index");
   }
   // POST送信するときはリクエストパラメータがあるはずだからRequestクラスのrequestインスタンスを引数に指定する
   public function post(Request $request) {
