@@ -24,4 +24,7 @@ Route::get('/', function () {
 // helloにgetリクエストするとHelloContorollerのindexアクションを実行する。
 // ルーティングでviewを作成するような処理は書かないのがMVCの基本のひとつ。
 // /hello/123/456とアドレスを指定すれば123と456が変数に入る
-Route::get("hello/{id?}/{pass?}", "HelloController@index");
+// Route::get("hello/{id?}/{pass?}", "HelloController@index");
+
+Route::get("hello", "HelloController@index");
+Route::get("hello/other", "HelloController@other");
