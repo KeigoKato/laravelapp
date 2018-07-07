@@ -7,12 +7,18 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-  // クエリ文字列を受け取る場合はアクションメソッドの引数にRequestクラスのrequestインスタンスを渡す。
-  public function index(Request $request) {
+  public function index() {
     $data = [
-      // "キー名"クエリの中身はrequestメソッドの"キー名"プロパティに入っている
-      "msg" => "これはコントローラから渡されたメッセージです。",
-      "id" => $request->id,
+      "msg" => "これはBladeを利用したサンプルです",
+    ];
+    return view("hello.index", $data);
+  }
+  // POST送信するときはリクエストパラメータがあるはずだからRequestクラスのrequestインスタンスを引数に指定する
+  public function post(Request $request) {
+    // name属性がmsgのPOST値を取得する
+    $msg = $request->msg;
+    $data =[
+      "msg" => "こんにちは、".$msg."さん！",
     ];
     return view("hello.index", $data);
   }
