@@ -16,7 +16,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$html = <<<EOF
+// /helloにアクセスするとreturnで返されるHTMLを出力する。
+// Route::get("hello", function() {
+//   return '<html><body><h1>Hello</h1><p>This is sample page.</p></body></html>';
+// });
+
+
+// getリクエスト先のアドレスに入力したmsgの値がヒアドキュメント内の$msgに反映される
+Route::get("hello/{msg}", function($msg){
+  $html = <<<EOF
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -37,17 +45,11 @@ $html = <<<EOF
   </head>
   <body>
     <h1>Hello</h1>
-    <p>This is sample page.</p>
+    <p>{$msg}</p>
     <p>これはサンプルで作ったページです。</p>
   </body>
 </html>
 EOF;
 
-// /helloにアクセスするとreturnで返されるHTMLを出力する。
-// Route::get("hello", function() {
-//   return '<html><body><h1>Hello</h1><p>This is sample page.</p></body></html>';
-// });
-
-Route::get("hello", function() use ($html) {
   return $html;
 });
