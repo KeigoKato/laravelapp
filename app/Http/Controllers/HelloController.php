@@ -7,37 +7,13 @@ use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-  // RequestクラスのrequestインスタンスとResponseクラスのresponseインスタンスを引数に置くことでフォームのパラメータを受け取る
-  public function index(Request $request, Response $response) {
-    $html = <<<EOF
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>Hello/Index</title>
-    <style>
-      body {
-        font-size: 16pt;
-        color: #999;
-      }
-      h1 {
-        font-size: 120pt;
-        text-align: right;
-        color: #fafafa;
-        margin: -50px 0 -120px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Hello</h1>
-    <h3>Request</h3>
-    <pre>{$request}</pre>
-    <h3>Response</h3>
-    <pre>{$response}</pre>
-  </body>
-</html>
-EOF;
-    $response->setContent($html);
-    return $response;
+  // クエリ文字列を受け取る場合はアクションメソッドの引数にRequestクラスのrequestインスタンスを渡す。
+  public function index(Request $request) {
+    $data = [
+      ["name"=>"山田たろう", "mail"=>"taro@yamada"],
+      ["name"=>"田中はなこ", "mail"=>"hanako@flower"],
+      ["name"=>"鈴木さちこ", "mail"=>"sachiko@happy"],
+    ];
+    return view("hello.index", ["data"=>$data]);
   }
 }
