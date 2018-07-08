@@ -19,13 +19,17 @@
   </head>
   <body>
     <h1>Blade/Index</h1>
-    <!-- <p><?php echo $msg; ?></p> と書いてもBladeで書いても同じこと-->
-    <p>{{$msg}}</p>
-    <form class="" action="/hello" method="post">
-      <!-- フォームタグの下には必ずcsrf対策用のヘルパーメソッドを指定する -->
-      {{csrf_field()}}
-      <input type="text" name="msg">
-      <input type="submit">
-    </form>
+    <p>&#064;whileディレクティブの例</p>
+    <ol>
+      @php
+      $counter = 0;
+      @endphp
+      @while($counter < count($data))
+      <li>{{$data[$counter]}}</li>
+      @php
+      $counter++;
+      @endphp
+      @endwhile
+    </ol>
   </body>
 </html>
