@@ -1,0 +1,28 @@
+CREATE DATABASE laravelapp;
+USE laravelapp;
+
+CREATE TABLE people (
+  id int(11) primary key auto_increment not null,
+  name varchar(255) not null,
+  mail varchar(255) not null,
+  age int(11) not null
+);
+
+INSERT INTO `people`(`id`, `name`, `mail`, `age`) VALUES (
+  "1",
+  "taro",
+  "taro@yamada.jp",
+  "35"
+);
+INSERT INTO `people`(`id`, `name`, `mail`, `age`) VALUES (
+  "2",
+  "hanako",
+  "hanako@flower.jp",
+  "24"
+);
+INSERT INTO `people`(`id`, `name`, `mail`, `age`) VALUES (
+  "3",
+  "sachiko",
+  "sachiko@happy.jp",
+  "47"
+);
