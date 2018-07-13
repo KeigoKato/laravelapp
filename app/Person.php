@@ -38,4 +38,8 @@ class Person extends Model
     public function board() {
         return $this->hasOne("App\Board");
     }
+
+    public function boards() {
+        return $this->hasMany("App\Board");
+    }
 }

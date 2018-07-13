@@ -20,7 +20,15 @@
         </td>
         <td>
             @if ($item->board != null)
-            {{$item->board->getdata()}}
+            <table width="100%">
+                @foreach ($item->boards as $obj)
+                <tr>
+                    <td>
+                        {{$obj->getData()}}
+                    </td>
+                </tr>
+                @endforeach
+            </table>
             @endif
         </td>
     </tr>
