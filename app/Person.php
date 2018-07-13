@@ -22,12 +22,12 @@ class Person extends Model
     public function scopeAgeLessThan($query, $n) {
         return $query->where("age", "<=", $n);
     }
-    protected static function boot() {
-        parent::boot();
-        static::addGlobalScope("age", function(Builder $builder){
-            $builder->where("age", ">", 20);
-        });
-    }
+    // protected static function boot() {
+    //     parent::boot();
+    //     static::addGlobalScope("age", function(Builder $builder){
+    //         $builder->where("age", ">", 20);
+    //     });
+    // }
 
     public static $rules = array(
         "name" => "required",
